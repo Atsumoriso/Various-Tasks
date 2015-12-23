@@ -1,0 +1,12 @@
+sku:45q910
+name:Pants
+description:78% Polyester / 17% Viskose / 5% Elastan
+is_enabled:yes
+is_in_stock:yes
+qty:12
+price:135.95
+special_price:99.95
+size:38
+color_id:789
+color:dark blue
+image_url:http://cdn.richandroyal.de/media/external/D/45q910_789_1_455.jpg

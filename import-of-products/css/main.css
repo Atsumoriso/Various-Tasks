@@ -1,0 +1,17 @@
+/**
+* This is styles file for products.php
+*/
+table {
+    border: 2px solid black; /* Рамка вокруг таблицы */
+    margin: 10px;
+    background-color: #e7e7e7; /*#FF6347;*/
+   }
+
+table:hover{
+	background-color: #ADFF2F;
+}
+
+/*-----Strike price ----*/
+.strike{
+text-decoration: line-through;
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Загрузить CSV file</title>
+</head>
+<body>
+<form action="csv.php" method="POST" enctype="multipart/form-data">
+	<!--User photo/avatar downloading-->
+
+  <p><label>Загрузить csv файл с ценами</label></p>
+  <input type="hidden" name="MAX_FILE_SIZE" value="1024000">
+  <input type="file" name="csv_file" title="Файл должен быть не более 1Мб">
+
+<!--Button submit-->
+<p><input type="submit" name="submit" value="Submit"</p>
+</body>
+</html>
