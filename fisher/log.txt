@@ -1,0 +1,14 @@
+Results:
+Crossing #1: move 2 children to right bank
+Crossing #2: move 1 child back to the left bank
+Crossing #3: move 1 adult to the right bank
+Crossing #4: move 1 child back to the left bank
+Crossing #5: move 2 children to right bank
+Crossing #6: move 1 child back to the left bank
+Crossing #7: move 1 adult to the right bank
+Crossing #8: move 1 child back to the left bank
+Crossing #9: move 2 children to right bank
+Crossing #10: move 1 child back to the left bank
+Crossing #11: move fisherman to the right bank
+Crossing #12: move 1 child back to the left bank
+Crossing #13: move 2 children to right bank

@@ -1,0 +1,4 @@
+#Fisher
+
+On the one bank of the river is a family - father, mother, son and daughter. The family wants to get to the other bank of the river. They found a fisherman with a boat who agreed to borrow a boat to them.  Family should get to another bank of the river and return the boat back to a fisherman. Boat can accommodate one adult person or two children.
+Solve this task using php5, utilize OOP, each object should be a class instance. Program should read a configuration from an ini file. It should be possible to change number of adults and/or children to any other number. Program should write a log file with results of its work where anyone could check how people cross the river and how many iterations passed.
