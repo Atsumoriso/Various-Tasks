@@ -1,0 +1,24 @@
+/**
+* This ts styles file 
+
+table {
+    border: 2px solid black; /* Рамка вокруг таблицы */
+    /*margin: 10px;
+    background-color: #e7e7e7; /*#FF6347;*/
+  /* }
+
+table:hover{
+	background-color: #ADFF2F;
+}*/
+
+/*-----Strike price ----*/
+.strike{
+text-decoration: line-through;
+}
+
+
+.task-name {
+font-family: 'font_for_task'; 
+src: url('fonts/font_for_task.ttf');
+}
+
