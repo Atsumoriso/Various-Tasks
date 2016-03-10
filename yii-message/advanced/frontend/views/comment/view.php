@@ -72,20 +72,17 @@
                     <ul>
                         <li><h3><?= $comment['comment_subject']; ?></h3></li>
                         <li><?= $comment['comment_message']; ?></li>
+                        <li><h4>Message added by:</h4>
+                            <b>Name:</b> <?= $comment['comment_writer']; ?>
+                            <b>From:</b> <?= $comment['country_name']; ?>
+                            <b>Email:</b> <?= $comment['comment_w_email']; ?>
+                            <b>Date:</b> <?= date("Y.m.d H:s", $comment['comment_date_created']) ?>
+                        </li>
+                        <li><a title="Delete message" href="<?= Url::to(['comment/archive', 'id' => $comment['comment_id']]) ?>">Delete</a> <a title="Edit message" href="<?= Url::to(['comment/edit', 'id' => $comment['comment_id']]) ?>">Edit</a> </li>
                     </ul>
 
                 </div>
-                <div class="col-md-84">
-                    <ul>
-                        <li><h4>Message added by:</h4></li>
-                        <li>Name: <?= $comment['comment_writer']; ?></li>
-                        <li>From: <?= $comment['country_name']; ?></li>
-                        <li>Email: <?= $comment['comment_w_email']; ?></li>
-                        <li>Date: <?= date("Y.m.d H:s", $comment['comment_date_created']) ?></li>
-                        <li><a title="Delete message" href="<?= Url::to(['comment/archive', 'id' => $comment['comment_id']]) ?>">Delete</a></li>
-                        <li><a title="Edit message" href="<?= Url::to(['comment/edit', 'id' => $comment['comment_id']]) ?>">Edit</a></li>
-                    </ul>
-                </div>
+
             <?php endforeach; ?>
         <?php else: ?>
             <p><?php echo 'No comments added.';?></p>

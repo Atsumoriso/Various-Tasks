@@ -124,9 +124,10 @@ class CommentController extends Controller
     public function actionEdit($id)
     {
         $id = Yii::$app->request->get('id');
-        $max_id = new Comment();
-        $check_id = $max_id->getMaxId();
-        if( $id <= $check_id ){ 
+        // Checking if line with this id exists
+        $check_id = Comment::find()->select(['comment_writer'])->where(['comment_id'=> $id])->one();
+
+        if( $check_id != null){
 
             $comment = new Comment();
             $comment_to_update = $comment->findModel($id);

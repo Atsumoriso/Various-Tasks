@@ -98,12 +98,6 @@
             return $comment = Comment::find()->where(['comment_id'=> $id])->asArray()->one();
         }
 
-        public function getMaxId()
-        {
-            $db = Yii::$app->db;
-            $max_id = $db->createCommand('SELECT count(comment_id) FROM comment')->execute();
-            return $max_id;
-        }
 
 
     }

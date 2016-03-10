@@ -40,7 +40,6 @@ AppAsset::register($this);
         ['label' => 'Comments',
          'items'=>[
              ['label'=>'View', 'url'=>['/comment/view/']],
-            // ['label'=>'Edit', 'url'=>['/comment/edit/']],
          ]],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
