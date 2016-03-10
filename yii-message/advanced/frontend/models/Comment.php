@@ -43,12 +43,12 @@
 //	                'country',
 //	                'country.country_id = comment.comment_country_id'
 //                )
-//                ->select(['comment_id', 'comment_writer', 'comment_w_email', 'comment_date_created', 'comment_subject', 'comment_message', 'comment_is_archived', 'country.country_name'])
+//                ->select(['comment_id', 'comment_writer', 'comment_w_email', 'comment_date_created', 'comment_subject', 'comment_message', 'comment_is_archived', 'country.country_name', 'comment_w_phone'])
 //                ->where(['comment_is_archived' => 0])
 //                ->orderBy(['comment_date_created' => SORT_DESC])
 //                ->all();
 
-            //variant #2 also works!
+            //variant #2 работает на 100%, разница - выше делается массив объектов, ниже - обычный массив!
             $db = Yii::$app->db;
             $allComments = $db
                 ->createCommand(

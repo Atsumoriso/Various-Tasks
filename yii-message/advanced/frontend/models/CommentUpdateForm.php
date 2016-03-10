@@ -11,7 +11,7 @@
 
 
     /**
-     * This is Comment Update Form  for comments
+     * This is Comment Update Form  for editing comments
      */
     class CommentUpdateForm extends Model
     {
@@ -19,8 +19,12 @@
 
         public $comment_writer;
         public $comment_w_email;
+        public $comment_w_phone;
+
         public $comment_subject;
         public $comment_message;
+        public $country;
+        public $comment_country_id;
 
         /*Attributes that were in the DB*/
         public $comment_id;// int
@@ -35,6 +39,10 @@
             $this->comment_writer = $this->comment_to_update['comment_writer'];
             //}
             $this->comment_w_email = $this->comment_to_update['comment_w_email'];
+            $this->comment_w_phone = $this->comment_to_update['comment_w_phone'];
+            $this->comment_country_id = $this->comment_to_update['comment_country_id'];
+
+
             $this->comment_subject = $this->comment_to_update['comment_subject'];
             $this->comment_message = $this->comment_to_update['comment_message'];
 
@@ -48,12 +56,22 @@
         public function rules()
         {
             return [
-                // name, email, subject and body are required
                 [['comment_writer', 'comment_w_email', 'comment_subject', 'comment_message'], 'required'],
 
-                [['comment_writer','comment_w_email','comment_subject'], 'filter','filter'=>'trim'],
+                ['country', 'required', 'message' => 'Please, make your choice'],
+
+                [['comment_writer','comment_w_email','comment_subject' ], 'filter','filter'=>'trim'],
+
                 // email has to be a valid email address
-                ['comment_w_email', 'email'],
+                ['comment_w_email', 'email', 'message' => 'E-mail should be in the format name@example.com'],
+
+                /*  validation for number of symbols*/
+                ['comment_writer', 'string', 'min' => 3, 'max' => 255, 'message' => 'Name should contain at least 3 characters'],
+                ['comment_subject', 'string', 'min' => 5, 'max' => 255, 'message' => 'Subject should contain at least 5 characters'],
+                ['comment_w_phone', 'integer', 'min' => 5, 'message' => 'Phone should contain figures only and not less than 5'],
+                ['comment_message', 'string', 'min' => 20, 'message' => 'Message should contain at least 20 characters'],
+
+
             ];
         }
 
@@ -68,7 +86,8 @@
                 'comment_w_email' =>'Your email',
                 'comment_subject' => 'Subject',
                 'comment_message' => 'Message',
-                //'verifyCode' => 'Verification Code',
+                'comment_w_phone' => 'Your phone',
+
             ];
         }
 
@@ -84,6 +103,8 @@
                 $comment = Comment::findOne($id);
                 $comment->comment_writer = $this->comment_writer;
                 $comment->comment_w_email = $this->comment_w_email;
+                $comment->comment_w_phone = $this->comment_w_phone;
+                $comment->comment_country_id = $this->country;
                 $comment->comment_subject = $this->comment_subject;
                 $comment->comment_message = $this->comment_message;
                 $comment->save();
@@ -93,6 +114,8 @@
             return false;
         }
 
+
+        //этот метод можно и отсюда вызвать, а не с контроллера, и сделать контроллер тоньше
 //        public function findModel($id)
 //        {
 //            return $comment = Comment::find()->where(['comment_id'=> $id])->asArray()->one();

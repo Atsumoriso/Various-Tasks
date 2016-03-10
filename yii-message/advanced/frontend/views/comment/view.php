@@ -3,13 +3,10 @@
     use yii\helpers\Html;
     use yii\bootstrap\ActiveForm;
     use frontend\models\Country;
-    use frontend\models\Comment_writer;
-    use frontend\models\CommentForm;
     use yii\helpers\ArrayHelper;
     use yii\widgets\LinkPager;
-    //use yii\widgets\ActiveForm;
     use yii\helpers\Url;
-    use yii\widgets\MaskedInput;
+
 
     $this->title = 'Comments';
     $this->params['breadcrumbs'][] = $this->title;
@@ -22,7 +19,7 @@
     <p class="alert alert-success">The message has been updated successfully.</p>
 <?php endif; ?>
 <?php if (Yii::$app->session->hasFlash('messageArchived')): ?>
-    <p class="alert alert-success">The task has been archived.</p>
+    <p class="alert alert-success">The message has been archived.</p>
 <?php endif; ?>
 
 <div class="site-signup">
@@ -41,11 +38,9 @@
 
             <?= $form->field($commentForm, 'comment_w_email') ?>
 
-            <?= $form->field($commentForm, 'comment_w_phone')->widget(MaskedInput::className(), [
-                 'mask' => '(999)999-99-99',
-                ]) ?>
+            <?= $form->field($commentForm, 'comment_w_phone')->textInput() ?>
 
-            <?= Html::activeDropDownList($commentForm, 'country', ArrayHelper::map(array_merge(['0'=>['country_id'=> '0','country_name' => 'Select your country']],Country::find()->all()), 'country_id', 'country_name')) ?>
+            <?= $form->field($commentForm, 'country')->DropDownList(ArrayHelper::map(array_merge(Country::find()->all()), 'country_id', 'country_name'), ['prompt' => 'Select your country']) ?>
 
 
             <?= $form->field($commentForm, 'comment_w_gender')->inline()->
@@ -74,11 +69,13 @@
                         <li><?= $comment['comment_message']; ?></li>
                         <li><h4>Message added by:</h4>
                             <b>Name:</b> <?= $comment['comment_writer']; ?>
+                            <b>Gender:</b> <?= $comment['comment_w_gender']; ?>
                             <b>From:</b> <?= $comment['country_name']; ?>
                             <b>Email:</b> <?= $comment['comment_w_email']; ?>
+                            <b>Phone:</b> <?= $comment['comment_w_phone']; ?>
                             <b>Date:</b> <?= date("Y.m.d H:s", $comment['comment_date_created']) ?>
                         </li>
-                        <li><a title="Delete message" href="<?= Url::to(['comment/archive', 'id' => $comment['comment_id']]) ?>">Delete</a> <a title="Edit message" href="<?= Url::to(['comment/edit', 'id' => $comment['comment_id']]) ?>">Edit</a> </li>
+                        <li><a title="Archive message" href="<?= Url::to(['comment/archive', 'id' => $comment['comment_id']]) ?>">Archive</a> <a title="Edit message" href="<?= Url::to(['comment/edit', 'id' => $comment['comment_id']]) ?>">Edit</a> </li>
                     </ul>
 
                 </div>

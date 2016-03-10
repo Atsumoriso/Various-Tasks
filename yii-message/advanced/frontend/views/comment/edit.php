@@ -2,11 +2,8 @@
 
     use yii\helpers\Html;
     use yii\bootstrap\ActiveForm;
-    use frontend\models\Country;
-    use frontend\models\CommentForm;
     use yii\helpers\ArrayHelper;
-    use yii\widgets\LinkPager;
-    use yii\helpers\Url;
+    use frontend\models\Country;
 
 
     $this->title = 'Edit message';
@@ -23,6 +20,10 @@
 
         <?= $form->field($commentForm, 'comment_w_email') ?>
 
+        <?= $form->field($commentForm, 'comment_w_phone')->textInput() ?>
+
+        <?= $form->field($commentForm, 'country')->DropDownList(ArrayHelper::map(array_merge(Country::find()->all()), 'country_id', 'country_name'), ['prompt' => 'Select your country']) ?>
+
         <?= $form->field($commentForm, 'comment_subject')->textInput() ?>
 
         <?= $form->field($commentForm, 'comment_message')->textarea() ?>
@@ -34,5 +35,4 @@
         <?php ActiveForm::end(); ?>
     </div>
 
-<?php //var_dump($a); ?>
 </div>
