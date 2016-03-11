@@ -20,6 +20,7 @@
         public $comment_writer;
         public $comment_w_email;
         public $comment_w_phone;
+        public $comment_w_gender;
 
         public $comment_subject;
         public $comment_message;
@@ -40,6 +41,7 @@
             //}
             $this->comment_w_email = $this->comment_to_update['comment_w_email'];
             $this->comment_w_phone = $this->comment_to_update['comment_w_phone'];
+            $this->comment_w_gender = $this->comment_to_update['comment_w_gender'];
             $this->comment_country_id = $this->comment_to_update['comment_country_id'];
 
 
@@ -71,7 +73,7 @@
                 ['comment_w_phone', 'integer', 'min' => 5, 'message' => 'Phone should contain figures only and not less than 5'],
                 ['comment_message', 'string', 'min' => 20, 'message' => 'Message should contain at least 20 characters'],
 
-
+                ['comment_w_gender', 'required']
             ];
         }
 
@@ -87,7 +89,7 @@
                 'comment_subject' => 'Subject',
                 'comment_message' => 'Message',
                 'comment_w_phone' => 'Your phone',
-
+                'comment_w_gender' => 'Gender',
             ];
         }
 
@@ -104,18 +106,18 @@
                 $comment->comment_writer = $this->comment_writer;
                 $comment->comment_w_email = $this->comment_w_email;
                 $comment->comment_w_phone = $this->comment_w_phone;
+                $comment->comment_w_gender = $this->comment_w_gender;
                 $comment->comment_country_id = $this->country;
                 $comment->comment_subject = $this->comment_subject;
                 $comment->comment_message = $this->comment_message;
                 $comment->save();
-
                 return true;
             }
             return false;
         }
 
 
-        //этот метод можно и отсюда вызвать, а не с контроллера, и сделать контроллер тоньше
+        //этот метод можно и отсюда вызвать, а не с контроллера, и сделать контроллер тоньше:)
 //        public function findModel($id)
 //        {
 //            return $comment = Comment::find()->where(['comment_id'=> $id])->asArray()->one();

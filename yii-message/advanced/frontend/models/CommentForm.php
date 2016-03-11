@@ -18,7 +18,7 @@ class CommentForm extends Model
     public $comment_writer;
     public $comment_w_email;
     public $comment_w_phone;
-    public $comment_w_gender;
+    public $comment_w_gender = 'M';//checked value!
     public $comment_country_id;
     public $country;
 
@@ -50,6 +50,9 @@ class CommentForm extends Model
             ['comment_w_phone', 'integer', 'min' => 5, 'message' => 'Phone should contain figures only and not less than 5'],
             ['comment_message', 'string', 'min' => 20, 'message' => 'Message should contain at least 20 characters'],
 
+            ['comment_w_gender', 'required'],
+
+
 
         ];
     }
@@ -68,7 +71,6 @@ class CommentForm extends Model
             'comment_w_gender' => 'Gender',
             'comment_subject' => 'Subject',
             'comment_message' => 'Your message',
-            //'verifyCode' => 'Verification Code',
         ];
     }
 
@@ -85,15 +87,7 @@ class CommentForm extends Model
             $comment->comment_writer = $this->comment_writer;
             $comment->comment_w_email = $this->comment_w_email;
             $comment->comment_w_phone = $this->comment_w_phone;
-
-
-            if($this->comment_w_gender == 'm'){
-                $comment->comment_w_gender = 'm';
-            } else {
-                $comment->comment_w_gender = 'f';
-            }
-
-
+            $comment->comment_w_gender = $this->comment_w_gender;
             $comment->comment_country_id = $this->country;
 
             $comment->comment_subject = $this->comment_subject;
@@ -106,7 +100,18 @@ class CommentForm extends Model
         return false;
     }
 
+    public function getPostData()
+    {
+        //return $res = Yii::$app->request->post();
+        $request = Yii::$app->request;
+        $res = $request->getBodyParams;
+        return $res; //= $request->getBodyParam('comment_writer');
+    }
 
+    public function getName()
+    {
+        return $this->comment_writer;
+    }
 
 
 }

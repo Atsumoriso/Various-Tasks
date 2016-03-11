@@ -85,7 +85,6 @@ class CommentController extends Controller
             $this->redirect(
                 Yii::$app->getUrlManager()->createUrl('comment/view')
             );
-
         }
         /** Start Comments list */
         $commentsOutputSubTitle = 'All comments';
@@ -97,7 +96,6 @@ class CommentController extends Controller
             'commentsOutputSubTitle' => $commentsOutputSubTitle,
             'commentForm' => $commentForm,
             'allComments' => $allComments,
-
         ]);
     }
 
@@ -151,7 +149,6 @@ class CommentController extends Controller
                 Yii::$app->getUrlManager()->createUrl('comment/view')
             );
         }
-
     }
 
 

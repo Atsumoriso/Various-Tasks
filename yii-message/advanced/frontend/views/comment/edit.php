@@ -24,6 +24,8 @@
 
         <?= $form->field($commentForm, 'country')->DropDownList(ArrayHelper::map(array_merge(Country::find()->all()), 'country_id', 'country_name'), ['prompt' => 'Select your country']) ?>
 
+        <?php echo $form->field($commentForm, 'comment_w_gender')->inline()->radioList(['M'=>'Male','F'=>'Female'],['options' => ['unselect' => null]]); ?>
+
         <?= $form->field($commentForm, 'comment_subject')->textInput() ?>
 
         <?= $form->field($commentForm, 'comment_message')->textarea() ?>

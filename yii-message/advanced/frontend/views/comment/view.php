@@ -6,6 +6,7 @@
     use yii\helpers\ArrayHelper;
     use yii\widgets\LinkPager;
     use yii\helpers\Url;
+    use yii\base\Model;
 
 
     $this->title = 'Comments';
@@ -40,11 +41,14 @@
 
             <?= $form->field($commentForm, 'comment_w_phone')->textInput() ?>
 
+
             <?= $form->field($commentForm, 'country')->DropDownList(ArrayHelper::map(array_merge(Country::find()->all()), 'country_id', 'country_name'), ['prompt' => 'Select your country']) ?>
 
+            <?php echo $form->field($commentForm, 'comment_w_gender')->inline()->radioList(['M'=>'Male','F'=>'Female']);
 
-            <?= $form->field($commentForm, 'comment_w_gender')->inline()->
-            radioList(['M'=>'Male','F'=>'Female'], ['options' =>['unselect' => false]]); ?>
+            //,['options' => ['unselect' => null],'item' => function($index, $label, $name, $checked, $value) {return "<label><input  type='radio' name='{$name}' value='{$value}' ".('M' ? 'checked' : '').">{$label}</label>";}]
+            ?>
+
 
             <?= $form->field($commentForm, 'comment_message')->textarea( $options = ['placeholder' => 'Оставьте Ваше сообщение...']) ?>
 
